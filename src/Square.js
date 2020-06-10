@@ -1,7 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './Square.css';
 
-const Square = ({initialColor}) => {
+const Square = ({ initialColor }) => {
 
   const [color, setColor] = useState(initialColor);
 

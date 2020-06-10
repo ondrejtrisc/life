@@ -1,7 +1,11 @@
+*{
+  box-sizing: border-box;
+}
+
 .square {
   width: 0.5rem;
   height: 0.5rem;
-  border: 1px solid blue;
+  border: 0.5px solid blue;
 }
 
 .black {

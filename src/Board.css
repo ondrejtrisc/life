@@ -1,5 +1,10 @@
+*{
+  box-sizing: border-box;
+}
+
 .board {
   display: flex;
-  border: 1px solid blue;
-  width: 50rem;
+  flex-wrap: wrap;
+  border: 0.5px solid blue;
+  width: calc(50rem + 2px);
 }
