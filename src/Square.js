@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Square.css';
 
-const Square = ({ initialColor }) => {
+const Square = ({ color, changeColor, i, j }) => {
 
-  const [color, setColor] = useState(initialColor);
+  // const [color, setColor] = useState(initialColor);
 
-  const handleClick = () => {
-    setColor(color => {
-      if (color === 'black') {
-        return 'white';
-      }
-      return 'black';
-    });
-  };
+  // const handleClick = () => {
+  //   setColor(color => {
+  //     if (color === 'black') {
+  //       return 'white';
+  //     }
+  //     return 'black';
+  //   });
+  // };
 
   return (
-    <div className={"square " + color} onClick={handleClick}>
+    <div className={"square " + color} onClick={() => changeColor(i, j)}>
     </div>
   );
 };
