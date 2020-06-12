@@ -231,16 +231,9 @@ function Board() {
     });
   };
 
-  const display = [];
-  for (let i = 0; i < height; i++) {
-    for (let j = 0; j < width; j++) {
-      display.push(<Square color={board[i][j]} changeColor={changeColor} i={i} j={j} key={'row-' + i + '-column-' + j} />)
-    }
-  }
-
   const startStop = () => {
     if(timer === null) {
-      setTimer(setInterval(step, 1000));
+      setTimer(setInterval(step, 600));
     }
     else {
       clearInterval(timer);
@@ -248,15 +241,32 @@ function Board() {
     }
   }
 
+  let liveCells = 0;
+  board.forEach(row => {
+    row.forEach(square => {
+      if(square === 'black') {
+        liveCells++;
+      }
+    });
+  });
+
+  const display = [];
+  for (let i = 0; i < height; i++) {
+    for (let j = 0; j < width; j++) {
+      display.push(<Square color={board[i][j]} changeColor={changeColor} i={i} j={j} key={'row-' + i + '-column-' + j} />)
+    }
+  }
+
   return (
     <>
+      <div id="stats" className="stats">Live cells: {liveCells}/5000 ({Math.round(liveCells / 50)}%)</div>
       <div id="board" className="board">
         {display}
       </div>
       <div id="control" className="control">
-        <Button color="primary" onClick={startStop}>{(timer === null) ? 'start' : 'stop' }</Button>
-        <Button color="primary" onClick={step}>single step</Button>
-        <Button color="primary" onClick={() => setBoard(randomBoard())}>random</Button>
+        <Button className="button" color={(timer === null) ? 'success' : 'danger'} onClick={startStop}>{(timer === null) ? 'start' : 'stop'}</Button>
+        <Button className="button" color={(timer === null) ? 'primary' : 'secondary'} onClick={() => {if (timer === null) {step()}}}>single step</Button>
+        <Button className="button" color={(timer === null) ? 'primary' : 'secondary'} onClick={() => {if (timer === null) {setBoard(randomBoard())}}}>random</Button>
       </div>
     </>
   );

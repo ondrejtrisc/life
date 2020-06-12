@@ -2,15 +2,23 @@
   box-sizing: border-box;
 }
 
+.stats {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
 .board {
   display: flex;
   flex-wrap: wrap;
-  border: 0.5px solid blue;
+  border: 0.5px solid lightgray;
   width: calc(50rem + 2px);
 }
 
 .control {
   display: flex;
-  justify-content: space-between;
-  margin: 1rem;
+  justify-content: center;
+}
+
+.button {
+  margin: 1rem 3rem;
 }
